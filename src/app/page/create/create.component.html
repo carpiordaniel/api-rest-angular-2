@@ -1,0 +1,45 @@
+<div class="formulario">
+  <p class="nota">Nota: debe ingresar todos los campos</p>
+  <p class="datos">Datos:</p>
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+
+    <div>
+      <input type="text" formControlName="nombre" placeholder="Nombre">
+      <span *ngIf="formulario.get('nombre') && formulario.get('nombre')!.errors && formulario.get('nombre')!.touched">
+        Por favor, ingrese solo texto en el campo de nombre.
+      </span>
+    </div>
+
+    <div>
+      <input type="text" formControlName="apellidos" placeholder="Apellidos">
+      <span *ngIf="formulario.get('apellidos') && formulario.get('apellidos')!.errors && formulario.get('apellidos')!.touched">
+        Por favor, ingrese solo texto en el campo de nombre.
+      </span>
+    </div>
+
+    <div>
+      <input type="email" formControlName="email" placeholder="Email">
+      <span *ngIf="formulario.get('email')!.invalid && (formulario.get('email')?.dirty || formulario.get('email')?.touched)">
+        Por favor, ingrese un correo válido.
+      </span>
+    </div>
+
+    <div>
+      <input type="number" formControlName="salario" placeholder="Salario">
+      <span *ngIf="formulario.get('salario')!.invalid && (formulario.get('salario')!.dirty || formulario.get('salario')!.touched)">
+        Por favor, ingrese un valor válido.
+      </span>
+    </div>
+
+    <div>
+      <input class="fecha" type="date" formControlName="fecha" placeholder="Fecha">
+      <span *ngIf="formulario.get('fecha')!.invalid && (formulario.get('fecha')?.dirty || formulario.get('fecha')?.touched)">
+        Por favor, ingrese una fecha válida.
+      </span>
+    </div>
+
+
+    
+    <button type="submit">Guardar Datos</button>
+  </form>
+</div>

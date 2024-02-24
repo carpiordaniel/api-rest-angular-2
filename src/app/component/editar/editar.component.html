@@ -1,0 +1,57 @@
+<div class="pop-up">
+  <form [formGroup]="personaForm" (ngSubmit)="guardar()">
+
+    <div>
+      <label for="nombre">Nombre:</label>
+      <!-- <input type="text" id="nombre" formControlName="nombre"> -->
+      <div>
+        <input type="text" formControlName="nombre" placeholder="Nombre">
+        <span *ngIf="personaForm.get('nombre') && personaForm.get('nombre')!.errors && personaForm.get('nombre')!.touched">
+          Por favor, ingrese solo texto.
+        </span>
+      </div>
+
+    </div>
+    <div>
+      <label for="apellidos">Apellidos:</label>
+      <!-- <input type="text" id="apellidos" formControlName="apellidos"> -->
+      <div>
+        <input type="text" formControlName="apellidos" placeholder="Apellidos">
+        <span *ngIf="personaForm.get('apellidos') && personaForm.get('apellidos')!.errors && personaForm.get('apellidos')!.touched">
+          Por favor, ingrese solo texto.
+        </span>
+      </div>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <!-- <input type="email" id="email" formControlName="email"> -->
+      <div>
+        <input type="email" formControlName="email" placeholder="Email">
+        <span *ngIf="personaForm.get('email')?.invalid && (personaForm.get('email')?.dirty || personaForm.get('email')?.touched)">
+          Por favor, ingrese un correo válido.
+        </span>
+      </div>
+    </div>
+    <div>
+      <label for="fecha">Fecha:</label>
+      <!-- <input type="date" id="fecha" formControlName="fecha"> -->
+      <div>
+        <input class="fecha" type="date" formControlName="fecha" placeholder="Fecha">
+        <span *ngIf="personaForm.get('fecha')?.invalid && (personaForm.get('fecha')?.dirty || personaForm.get('fecha')?.touched)">
+          Por favor, ingrese una fecha válida.
+        </span>
+      </div>
+    </div>
+    <div>
+      <label for="salario">Salario:</label>
+      <!-- <input type="number" id="salario" formControlName="salario"> -->
+      <div>
+        <input type="number" formControlName="salario" placeholder="Salario">
+        <span *ngIf="personaForm.get('salario')?.invalid && (personaForm.get('salario')?.dirty || personaForm.get('salario')?.touched)">
+          Por favor, ingrese un valor válido.
+        </span>
+      </div>
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+</div>

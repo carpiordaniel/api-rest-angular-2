@@ -1,0 +1,19 @@
+<style>
+  .container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.container .content {
+  background-color: rgb(235, 235, 235);
+}
+  
+</style>
+
+
+<div class="container">
+  <app-menu />
+  <div class="content">
+    <router-outlet />
+  </div>
+</div>

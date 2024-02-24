@@ -1,0 +1,59 @@
+
+
+
+<div class="table-container">
+  <p class="rojo">
+    Tabla de personas
+  </p>
+
+  <div class="buscar">
+    <label for="">Buscar: </label>
+    <input type="text" (keyup)="buscar($event)">
+    
+  </div>
+
+  
+  <div class="separador">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Fecha</th>
+            <th>Salario</th>
+            <th>Email</th>
+            <th class="eliminar">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr *ngFor="let persona of personas"> -->
+          <tr *ngFor="let persona of personasFiltradas">
+            <td>{{ persona.id }}</td>
+            <td>{{ persona.nombre }}</td>
+            <td >{{ persona.apellidos }}</td>
+            <td>{{ persona.fecha }}</td>
+            <td>{{ persona.salario | currency }}</td>
+            <td>{{ persona.email }}</td>
+            <td class="eliminar">
+              <button (click)="eliminarPorId(persona.id)">❌</button>
+              <button class="editar" (click)="toggleModoEdicion(persona)">✏️</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pup-up" [ngClass]="{ 'oculto': modoOculto }">
+    <div class="pop-up-container">
+      <span class="cerrar" (click)="editarModoOcuto()">❌</span>
+      <app-editar class="editar" [personaEditar]="personaEditar"></app-editar>
+      
+    </div>
+  </div>
+
+</div>
+
+
